@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="module" src="earth.js"></script>
+    <script
+      async
+      src="https://ga.jspm.io/npm:es-module-shims@1.5.1/dist/es-module-shims.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.154.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.154.0/examples/jsm/"
+        }
+      }
+    </script>
+
+    <script>
+      const EARTH =
+        "data:image/png;base64,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";
+    </script>
+    <title>Satellites</title>
+  </head>
+
+  <body>
+    <section class="satspec">
+      <section class="sat_pulse">
+        <div class="seasat">
+          <div class="seasat Stats" id="seasatStats">
+              <p class="cardbackgroundpic"></p>
+            <div class="satHorz">
+              <div class="satLD">
+                <div class="satLD con">
+                  <img
+                    src="pics/icons/calendar-event.svg"
+                    alt="Launch Date"
+                    class="satLD icon"
+                  />
+                  <p class="satLD th">Launch Date</p>
+                </div>
+                <p class="satLD dh">June 26, 1978</p>
+              </div>
+              <div class="satType">
+                <div class="satType con">
+                  <img
+                    src="pics/icons/syzPtGm.svg"
+                    alt="Type"
+                    class="satType icon"
+                  />
+                  <p class="satType th">Type</p>
+                </div>
+                <p class="satType dh">Orbiter</p>
+              </div>
+              <div class="satStts">
+                <div class="satStts con">
+                  <img
+                    src="pics/icons/circle-notch-solid (1).svg"
+                    alt="Status"
+                    class="satStts icon"
+                  />
+                  <p class="satStts th">Status</p>
+                </div>
+                <p class="satStts dh">Past</p>
+              </div>
+            </div>
+            <div class="satIns">
+              <h2 class="satIns t">Instruments</h2>
+              <div class="satIns d">
+                <div class="listIns">
+                  <div class="dashIns"></div>
+                  <p>Radar altimeter</p>
+                </div>
+                <div class="listIns">
+                  <div class="dashIns"></div>
+                  <p>Synthetic Aperture Radar (SAR)</p>
+                </div>
+                <div class="listIns">
+                  <div class="dashIns"></div>
+                  <p>SEASAT-A Satellite Scatterometer (SASS)</p>
+                </div>
+                <div class="listIns">
+                  <div class="dashIns"></div>
+                  <p>Visible and Infrared Radiometer (VIRR)</p>
+                </div>
+                <div class="listIns">
+                  <div class="dashIns"></div>
+                  <p>Scanning Multichannel Microwave Radiometer (SMMR)</p>
+                </div>
+              </div>
+            </div>
+            <div class="satIm">
+              <h2 class="satIm t">Impact</h2>
+              <p class="satIm d">
+                Seasat operated in Earth orbit for 105 days, measuring
+                sea-surface winds and temperatures, wave heights, atmospheric
+                liquid water content, sea ice features and ocean topography,
+                before a massive short circuit in the spacecraft's electrical
+                system ended the mission on October 10, 1978.
+              </p>
+            </div>
+          </div>
+          <div class="seasat pulser" onclick="ShowStats(this, 1)"></div>
+          <img class="seasat_pic"
+            src="pics/satellite_pics/seat=sat.png"
+            alt="seasat satellite"
+          />
+        </div>
+        <div class="tiros">
+          <div class="tiros Stats" id="tirosStats">
+            <p class="cardbackgroundpic"></p>
+          <div class="satHorz">
+            <div class="satLD">
+              <div class="satLD con">
+                <img
+                  src="pics/icons/calendar-event.svg"
+                  alt="Launch Date"
+                  class="satLD icon"
+                />
+                <p class="satLD th">Launch Date</p>
+              </div>
+              <p class="satLD dh">June 26, 1978</p>
+            </div>
+            <div class="satType">
+              <div class="satType con">
+                <img
+                  src="pics/icons/syzPtGm.svg"
+                  alt="Type"
+                  class="satType icon"
+                />
+                <p class="satType th">Type</p>
+              </div>
+              <p class="satType dh">Orbiter</p>
+            </div>
+            <div class="satStts">
+              <div class="satStts con">
+                <img
+                  src="pics/icons/circle-notch-solid (1).svg"
+                  alt="Status"
+                  class="satStts icon"
+                />
+                <p class="satStts th">Status</p>
+              </div>
+              <p class="satStts dh">Past</p>
+            </div>
+          </div>
+          <div class="satIns">
+            <h2 class="satIns t">Instruments</h2>
+            <div class="satIns d">
+              <div class="listIns">
+                <div class="dashIns"></div>
+                <p>Radar altimeter</p>
+              </div>
+              <div class="listIns">
+                <div class="dashIns"></div>
+                <p>Synthetic Aperture Radar (SAR)</p>
+              </div>
+              <div class="listIns">
+                <div class="dashIns"></div>
+                <p>SEASAT-A Satellite Scatterometer (SASS)</p>
+              </div>
+              <div class="listIns">
+                <div class="dashIns"></div>
+                <p>Visible and Infrared Radiometer (VIRR)</p>
+              </div>
+              <div class="listIns">
+                <div class="dashIns"></div>
+                <p>Scanning Multichannel Microwave Radiometer (SMMR)</p>
+              </div>
+            </div>
+          </div>
+          <div class="satIm">
+            <h2 class="satIm t">Impact</h2>
+            <p class="satIm d">
+              Seasat operated in Earth orbit for 105 days, measuring
+              sea-surface winds and temperatures, wave heights, atmospheric
+              liquid water content, sea ice features and ocean topography,
+              before a massive short circuit in the spacecraft's electrical
+              system ended the mission on October 10, 1978.
+            </p>
+          </div>
+        </div>
+
+          <div class="tiros pulser" onclick="ShowStats(this, 2)"></div>
+          <div class="tirosPic">
+            <img
+              class="tiros_pic"
+              src="pics/satellite_pics/tiros.png"
+              alt="Tiros satellite"
+            />
+          </div>
+        </div>
+        <div class="micheal">
+          <div class="micheal pulser"></div>
+          <div class="michealPic">
+            <img
+              class="micheal_pic"
+              src="pics/satellite_pics/michael.png"
+              alt="Micheal satellite"
+            />
+          </div>
+        </div>
+        <div class="terra">
+          <div class="terra pulser"></div>
+          <div class="terraPic">
+            <img
+              class="terra_pic"
+              src="pics/satellite_pics/terra.png"
+              alt="Terra satellite"
+            />
+          </div>
+        </div>
+		<div class="aquarius">
+			<div class="aquarius pulser"></div>
+			<div class="aquariusPic">
+			  <img
+				class="aquarius_pic"
+				src="pics/satellite_pics/aquarius22.png"
+				alt="Aquarius satellite"
+			  />
+			</div>
+		  </div>
+      </section>
+      <section class="earthscene">
+        <div class="bg-animation">
+          <div id="stars"></div>
+          <div id="stars2"></div>
+          <div id="stars3"></div>
+          <div id="stars4"></div>
+        </div>
+      </section>
+    </section>
+  </body>
+  <script src="earth.js"></script>
+  <script>
+    let initialTop;
+    let initialLeft;
+    function ShowStats(element, index) {
+        console.log("show stats");
+        let Stats;
+        if (index == 1) {
+          Stats = document.getElementById("seasatStats");
+          initialTop = "30%";
+          initialLeft = "23%";
+        } else if (index == 2) {
+          Stats = document.getElementById("tirosStats");
+          initialTop = "80%";
+        initialLeft = "23%";
+        } else if (index == 3) {
+          Stats = document.getElementById("tirosStats");
+          initialTop = "80%";
+          initialLeft = "60%";
+        }else if (index == 4) {
+          Stats = document.getElementById("tirosStats");
+          initialTop = "80%";
+          initialLeft = "60%";
+        }else if (index == 5) {
+          Stats = document.getElementById("tirosStats");
+          initialTop = "28%";
+          initialLeft = "65%";
+        }
+
+        if (Stats.style.display === "block") {
+          HideStats(element, Stats);
+        } else {
+          ShowCard(element, Stats);
+        }
+      }
+
+      function ShowCard(element, card) {
+        element.style.position = "absolute";
+        element.style.top = "6%";
+        element.style.left = "18%";
+        card.style.display = "block";
+      }
+
+      function HideStats(element, card) {
+
+card.style.display = "none";
+element.style.top = initialTop;
+element.style.left = initialLeft;
+    }
+  </script>
+
+</html>
