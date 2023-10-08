@@ -337,6 +337,24 @@ body {
   }
 }
 
+.buttonahmad{
+  background-color: #422758;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: "DINNextRoundedLTW01-Regular";
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 /* This is the background section */
 
