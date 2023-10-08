@@ -1,6 +1,32 @@
 @import url(//db.onlinewebfonts.com/c/14936bb7a4b6575fd2eee80a3ab52cc2?family=Feather+Bold);
 @import url(//db.onlinewebfonts.com/c/ab596f21664c5582567537d241e2a53e?family=DINNextRoundedLTW01-Regular);
+body {
+  margin: 0;
+  padding: 0;
+}
 
+.header {
+  background-color: rebeccapurple;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+font-family: Feather Bold;
+
+}
+
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
 
 /* general */
 
@@ -16,7 +42,7 @@ body {
 
 /* This is cards section */
 .cardbackgroundpic {
-  background-image: url("pics/satellite_pics/cardPics/seat=sat\ \(1\).png");
+ 
   background-size: cover; /* Adjusts the size to cover the entire element */
   background-repeat: no-repeat;
   height: 90px;
@@ -24,7 +50,25 @@ body {
   margin: 0px;
   background-position: 50% 50%;
 }
+.seasatcar{
+  background-image: url("pics/satellite_pics/cardPics/seat=sat\ \(1\).png");
+}
 
+.tiroscar{
+  background-image: url("pics/satellite_pics/cardPics/tiros.png");
+  background-size: 40%;
+}
+
+.michealcar{
+  background-image: url("pics/satellite_pics/cardPics/michael-fotor-202310061103.png");
+}
+
+.terracar{
+  background-image: url("pics/satellite_pics/cardPics/terra2-fotor-20231007125238.png");
+}
+.aquariuscar{
+  background-image: url("pics/satellite_pics/cardPics/aquarius-fotor-20231006103936.png");
+}
 .Stats {
   background-color: black;
   border: 1px solid #ccc;
@@ -94,7 +138,7 @@ body {
 .dashIns {
   width: 17px;
   height: 2px;
-  background-color: black;
+  background-color: rgb(255, 255, 255);
   margin-right: 10px;
   margin-top: 10px;
 }
